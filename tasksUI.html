@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            .flex{
+                display: flex;
+                flex-direction: row;
+            }
+            .flex-common{
+                flex-basis: 20%;
+                margin: 5px;
+            }
+            .category-header{
+                display: flex;
+                height: 50px;
+                width: 100%;
+                justify-content: center;
+                align-content: center;
+            }
+            .category-header h3{
+                margin: auto;
+                color: white;
+            }
+            #urgent{
+                border: red 2px solid;
+            }
+            #high{
+                border: orange 2px solid;
+            }
+            #medium{
+                border: yellow 2px solid;
+            }
+            #low{
+                border: green 2px solid;
+            }
+            #other{
+                border: gray 2px solid;
+            }
+            .urgent {
+                background-color: red;
+            }
+            .high {
+                background-color: orange;
+            }
+            .medium {
+                background-color: yellow;
+            }
+            .low {
+                background-color: green;
+            }
+            .other {
+                background-color: gray;
+            }
+        </style>
+    </head>
+    <body>
+        <div style="display:flex;flex-basis:100%">
+            <div class="flex-col flex-common" id="urgent">
+                <div class="category-header urgent">
+                    <h3>Urgent</h3>
+                </div>
+            </div>
+            <div class="flex-col flex-common " id="high">
+                <div class="category-header high"><h3>High Priority</h3></div>
+            </div>
+            <div class="flex-col flex-common " id="medium">
+                <div class="category-header medium"><h3>Medium Priority</h3></div>
+            </div>
+            <div class="flex-col flex-common " id="low">
+                <div class="category-header low"><h3>Low Priority</h3></div>
+            </div>
+            <div class="flex-col flex-common " id="other">
+                <div class="category-header other"><h3>Other</h3></div>
+            </div>
+        </div>
+        <script>fetch(`http://localhost:3000/urgent`).then(x => x.json()).then(y => y.map(x => document.querySelectorAll('#urgent .urgent h3')[0].insertAdjacentHTML('afterend',`<div> <span>task name: ${x.taskName}</span> <span>${x.taskDetail}</span</div>`)))</script>
+    </body>
+</html>
